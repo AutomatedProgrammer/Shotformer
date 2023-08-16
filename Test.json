@@ -18,6 +18,15 @@
             "object_x": 340,
             "object_y": 240,
             "image_path": "red_square.png" 
+        },
+
+        {
+            "object_name": "player",
+            "object_width": 10,
+            "object_height": 10,
+            "object_x": 50,
+            "object_y": 50,
+            "image_path": "blue_square.png" 
         }
         
     ]
