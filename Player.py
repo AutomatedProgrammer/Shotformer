@@ -8,17 +8,15 @@ PL_V = 5  # player velocity, had to include this here
 
 class Player(Object):
 
-    def keytracker(self):
-        super().__init__()
+    def init(self, name, width, height, x, y, image_path):
+        super(Player, self).init(name, width, height, x,y, image_path)
 
-        character = pygame.player_movement.get_pressed()
+        key = pygame.player_movement.get_pressed()
 
-        character.x_vel = 0;
+        if key[pygame.K_LEFT]:
+            self.move_left(PL_V)
 
-        if character[pygame.K_LEFT]:
-            character.move_left(PL_V)
-
-        if character[pygame.K_RIGHT]:
-            character.move_right(PL_V)
+        elif key[pygame.K_RIGHT]:
+            self.move_right(PL_V)
 
 # jumping can be added here, but for now, this will be for movements left and right.
