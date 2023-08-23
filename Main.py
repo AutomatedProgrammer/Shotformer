@@ -1,6 +1,7 @@
 from App import App
 from Object import Object
 from Level import Level
+#from Player import Player
 
 App = App("Shotformer", 640, 480)
 
@@ -12,6 +13,10 @@ Level1.load_level("Test.json")
 #Level1.add_obj(Object2)
 
 App.app_add_level(Level1)
+
+
+
+#App.app_add_obj(Player)
 #App.app_add_obj(Object1)
 App.app_running()
 
