@@ -16,9 +16,16 @@ class Player(Object):
 
         if key[pygame.K_LEFT]:
             self.move_x(-PL_V)
+            
 
         elif key[pygame.K_RIGHT]:
-            self.move_x(PL_V)
+            if (self.rect.centerx > 380):
+                pass
+            else: 
+                self.move_x(PL_V)
+               
+            
+            
 
         self.rect.centerx = self.x
         self.rect.centery = self.y
