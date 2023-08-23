@@ -26,3 +26,5 @@ class Object(pygame.sprite.Sprite):
     def update(self):
         self.rect.centerx = self.x
         self.rect.centery = self.y
+
+    

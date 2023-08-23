@@ -18,7 +18,7 @@ class App:
 
         #Levels
         self.Levels = []
-        self.Player = Player("player", 10, 10, 50, 50, "blue_square.png")
+        #self.Player = Player("player", 10, 10, 50, 50, "blue_square.png")
 
     def app_events(self):
         for event in pygame.event.get():
@@ -39,8 +39,8 @@ class App:
         #self.Objects.update()
         for Level in self.Levels:
             Level.draw(self.screen)
-        self.screen.blit(self.Player.image, self.Player.rect)
-        self.Player.update()
+        #self.screen.blit(self.Player.image, self.Player.rect)
+        #self.Player.update()
         pygame.display.flip()
 
     def app_running(self):

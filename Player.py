@@ -16,8 +16,10 @@ class Player(Object):
         key = pygame.key.get_pressed()
 
         if key[pygame.K_LEFT]:
-            self.move_x(-PL_V)
-            self.in_middle = False
+            if self.rect.centerx > 0:
+                self.move_x(-PL_V)
+                self.in_middle = False
+            
             
         elif key[pygame.K_RIGHT]:
             if self.rect.centerx > 380:
