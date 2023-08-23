@@ -8,25 +8,24 @@ PL_V = 3  # player velocity, had to include this here
 
 class Player(Object):
 
-    def init(self, name, width, height, x, y, image_path):
-        super(Player, self).init(name, width, height, x,y, image_path)
+    def __init__(self, name, width, height, x, y, image_path):
+        super(Player, self).__init__(name, width, height, x,y, image_path)
+        self.in_middle = False
 
     def update(self):
         key = pygame.key.get_pressed()
 
         if key[pygame.K_LEFT]:
             self.move_x(-PL_V)
+            self.in_middle = False
             
-
         elif key[pygame.K_RIGHT]:
-            if (self.rect.centerx > 380):
-                pass
-            else: 
-                self.move_x(PL_V)
-               
-            
-            
+            if self.rect.centerx > 380:
+                self.in_middle = True
 
+            elif self.in_middle == False: 
+                self.move_x(PL_V)
+                
         self.rect.centerx = self.x
         self.rect.centery = self.y
 

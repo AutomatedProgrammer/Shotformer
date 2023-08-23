@@ -1,6 +1,7 @@
 import pygame
 #from Object import Object
 from Level import Level
+from Player import Player
 
 #This will be the app portion of the program. This is where the running loop will be
 #and where it all comes together.
@@ -17,7 +18,8 @@ class App:
 
         #Levels
         self.Levels = []
-        
+        self.Player = Player("player", 10, 10, 50, 50, "blue_square.png")
+
     def app_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -37,6 +39,8 @@ class App:
         #self.Objects.update()
         for Level in self.Levels:
             Level.draw(self.screen)
+        self.screen.blit(self.Player.image, self.Player.rect)
+        self.Player.update()
         pygame.display.flip()
 
     def app_running(self):
