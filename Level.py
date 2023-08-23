@@ -3,6 +3,8 @@ import json
 from Object import Object
 from Player import Player
 
+scroll_speed = 3
+
 class Level:
     
     def __init__(self):
@@ -28,5 +30,5 @@ class Level:
         self.Objects.draw(screen)
         for object in self.Objects:
             if object.name != "player" and self.player_object.in_middle == True:
-                object.move_x(-3)
+                object.move_x(-scroll_speed)
         self.Objects.update()
