@@ -3,12 +3,21 @@
 
     "objects": [
         {
+            "object_name": "background",
+            "object_width": 640,
+            "object_height": 480,
+            "object_x": 320,
+            "object_y": 220,
+            "image_path": "background.jpg"
+        },
+
+        {
             "object_name": "object1",
-            "object_width": 25,
+            "object_width": 45,
             "object_height": 25,
             "object_x": 150,
             "object_y": 200,
-            "image_path": "blue_square.png" 
+            "image_path": "block.png" 
         },
         
         {
@@ -17,18 +26,80 @@
             "object_height": 50,
             "object_x": 340,
             "object_y": 240,
-            "image_path": "red_square.png" 
+            "image_path": "question_block.png" 
+        },
+
+        {
+            "object_name": "object5",
+            "object_width": 50,
+            "object_height": 50,
+            "object_x": 40,
+            "object_y": 240,
+            "image_path": "question_block.png" 
+        },
+
+        {
+            "object_name": "object6",
+            "object_width": 50,
+            "object_height": 50,
+            "object_x": 500,
+            "object_y": 240,
+            "image_path": "question_block.png" 
+        },
+
+        {
+            "object_name": "object7",
+            "object_width": 50,
+            "object_height": 50,
+            "object_x": 230,
+            "object_y": 140,
+            "image_path": "question_block.png" 
+        },
+
+        {
+            "object_name": "object3",
+            "object_width": 45,
+            "object_height": 25,
+            "object_x": 100,
+            "object_y": 100,
+            "image_path": "block.png" 
+        },
+
+        {
+            "object_name": "object3",
+            "object_width": 45,
+            "object_height": 25,
+            "object_x": 100,
+            "object_y": 100,
+            "image_path": "block.png" 
+        },
+
+        {
+            "object_name": "object8",
+            "object_width": 45,
+            "object_height": 25,
+            "object_x": 420,
+            "object_y": 130,
+            "image_path": "block.png" 
+        },
+
+        {
+            "object_name": "ground",
+            "object_width": 1000,
+            "object_height": 190,
+            "object_x": 245,
+            "object_y": 445,
+            "image_path": "ground.png"
         },
 
         {
             "object_name": "player",
-            "object_width": 10,
-            "object_height": 10,
-            "object_x": 50,
-            "object_y": 50,
-            "image_path": "blue_square.png" 
+            "object_width": 20,
+            "object_height": 20,
+            "object_x": 10,
+            "object_y": 10,
+            "image_path": "red_square.jpg"
         }
-        
     ]
 
 }
