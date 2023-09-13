@@ -99,6 +99,15 @@
             "object_x": 10,
             "object_y": 10,
             "image_path": "red_square.jpg"
+        },
+
+        {
+            "object_name": "enemy",
+            "object_width": 20,
+            "object_height": 20,
+            "object_x": 300,
+            "object_y": 40,
+            "image_path": "red_square.jpg"
         }
     ]
 

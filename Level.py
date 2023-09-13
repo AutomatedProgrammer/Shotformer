@@ -2,6 +2,7 @@ import pygame
 import json
 from Object import Object
 from Player import Player
+from Enemy import Enemy
 
 scroll_speed = 3
 
@@ -20,6 +21,9 @@ class Level:
                 self.Objects.add(self.player_object)
                 #the commented out sections are for when the player class gets implemented. It's supposed to follow the same format as the object class since it inherits from it.
                 #pass
+            elif (temp_object.name == "enemy"):
+                self.enemy_object = Enemy(object.get("object_name"),object.get("object_width"), object.get("object_height"), object.get("object_x"), object.get("object_y"), object.get("image_path"))
+                self.Objects.add(self.enemy_object)
             else:
                 self.Objects.add(temp_object)
        
@@ -31,4 +35,6 @@ class Level:
         for object in self.Objects:
             if object.name != "player" and self.player_object.in_middle == True:
                 object.move_x(-scroll_speed)
+            #elif object.name == "enemy":
+                #object.move_x(-scroll_speed)
         self.Objects.update()
