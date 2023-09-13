@@ -1,16 +1,25 @@
 import pygame
 from Object import Object
 
-gravity = 5
-
 class Enemy(Object):
 
     def __init__(self, name, width, height, x, y, image_path):
         super(Enemy, self).__init__(name, width, height, x, y, image_path)
-
+        self.gravity = 5
+        self.move_ticks = 500
+        self.timer = 0
+        self.movement_speed = 1
+        self.direction = "left"
+            
     def update(self):
         if self.rect.centery < 340:
-            self.move_y(gravity)
+            self.move_y(self.gravity)
+        
+        if self.direction == "right":
+            self.move_x(self.movement_speed)
+        elif self.direction == "left":
+            self.move_x(-self.movement_speed)
+            
         #self.move_y(gravity)
         #self.rect.centery = self.y
         self.rect.centerx = self.x

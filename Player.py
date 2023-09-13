@@ -6,7 +6,7 @@ from Object import Object
 
 PL_V = 3  # player velocity, had to include this here
 gravity = 5
-jump_height = 10
+jump_height = 12
 
 class Player(Object):
 
@@ -55,9 +55,10 @@ class Player(Object):
             self.move_y(gravity)
             self.rect.centery = self.y
             self.air_time += 1
-            if self.rect.centery == 340:
+            if self.rect.centery >= 340:
                 self.jumping = False
                 self.air_time = 0
+                self.rect.centery = 340
                 
 
         #Regular movement
