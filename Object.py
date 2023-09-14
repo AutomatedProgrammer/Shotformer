@@ -27,4 +27,5 @@ class Object(pygame.sprite.Sprite):
         self.rect.centerx = self.x
         self.rect.centery = self.y
 
-    
+    def die(self):
+        self.kill()
