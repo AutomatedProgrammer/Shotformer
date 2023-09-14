@@ -32,6 +32,7 @@ class Player(Object):
 
         #Jumping movement. I think to make it smoother we only set jumping to false after the key's been held down for a little bit.
         if key[pygame.K_UP] and key[pygame.K_RIGHT] and self.jumping == False:
+            self.direction = "right"
             if self.air_time > 50:
                 self.jumping = True
                 self.air_time = 0
@@ -44,6 +45,7 @@ class Player(Object):
                 self.move_x(self.PL_V)
                 
         elif key[pygame.K_UP] and key[pygame.K_LEFT] and self.jumping == False:
+            self.direction = "left"
             if self.air_time > 50:
                 self.jumping = True
                 self.air_time = 0
@@ -74,12 +76,14 @@ class Player(Object):
 
         #Regular movement
         if key[pygame.K_LEFT]:
+            self.direction = "left"
             if self.rect.centerx > 0:
                 self.move_x(-self.PL_V)
                 self.in_middle = False
             
             
         elif key[pygame.K_RIGHT]:
+            self.direction = "right"
             if self.rect.centerx > 380:
                 self.in_middle = True
 
