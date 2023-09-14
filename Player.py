@@ -23,6 +23,7 @@ class Player(Object):
         if key[pygame.K_SPACE] and self.gun_empty == False:
             print("BANG")
             self.gun_empty = True
+            self.gun_fired = True
         
         if key[pygame.K_r] and self.gun_empty == True:
             print("RELOAD")
@@ -84,11 +85,6 @@ class Player(Object):
             elif self.in_middle == False: 
                 self.move_x(self.PL_V)
 
-        
-
-        
-
-        
         self.rect.centerx = self.x
         self.rect.centery = self.y
 

@@ -4,8 +4,8 @@ from Object import Object
 class Bullet(Object):
 
     def __init__(self, name, width, height, x, y, image_path):
-        super(Player, self).__init__(name, width, height, x,y, image_path)
-        self.bullet_speed = 5
+        super(Bullet, self).__init__(name, width, height, x,y, image_path)
+        self.bullet_speed = 25
 
     def update(self):
         self.move_x(self.bullet_speed)
