@@ -32,6 +32,4 @@ class Enemy(Object):
         #self.rect.centery = self.y
         self.rect.centerx = self.x
         self.rect.centery = self.y
-
-    
 # There is probably a much better way of doing this

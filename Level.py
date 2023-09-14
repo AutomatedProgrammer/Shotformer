@@ -3,6 +3,7 @@ import json
 from Object import Object
 from Player import Player
 from Enemy import Enemy
+from Bullet import Bullet
 
 scroll_speed = 3
 
@@ -35,6 +36,15 @@ class Level:
         for object in self.Objects:
             if object.name != "player" and self.player_object.in_middle == True:
                 object.move_x(-scroll_speed)
-            #elif object.name == "enemy":
-                #object.move_x(-scroll_speed)
+            if object.name == "player" and self.player_object.gun_fired == True:
+                self.bullet_object = Bullet("bullet", 20, 20, self.player_object.x, self.player_object.y, "red_square.jpg")
+                if self.player_object.direction == "right":
+                    self.bullet_object.direction = "right"
+                elif self.player_object.direction == "left":
+                    self.bullet_object.direction = "left"
+                self.add_obj(self.bullet_object)
+                self.player_object.gun_fired = False
+            if object.name == "bullet" and self.bullet_object.air_time == 50:
+                self.bullet_object.die()
+
         self.Objects.update()
