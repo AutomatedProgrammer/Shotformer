@@ -37,9 +37,10 @@ class Level:
             if object.name != "player" and self.player_object.in_middle == True:
                 object.move_x(-scroll_speed)
             if object.name == "player" and self.player_object.gun_fired == True:
-                bullet_object = Bullet("bullet", 20, 20, self.player_object.x, self.player_object.y, "red_square.jpg")
-                self.add_obj(bullet_object)
+                self.bullet_object = Bullet("bullet", 20, 20, self.player_object.x, self.player_object.y, "red_square.jpg")
+                self.add_obj(self.bullet_object)
                 self.player_object.gun_fired = False
-            #elif object.name == "enemy":
-                #object.move_x(-scroll_speed)
+            if object.name == "bullet" and self.bullet_object.air_time == 50:
+                self.bullet_object.die()
+                
         self.Objects.update()

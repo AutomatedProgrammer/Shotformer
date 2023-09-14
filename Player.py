@@ -16,6 +16,7 @@ class Player(Object):
         self.PL_V = 3  # player velocity, had to include this here
         self.gravity = 5
         self.jump_height = 12
+        self.direction = "right"
 
     def update(self):
         key = pygame.key.get_pressed()
