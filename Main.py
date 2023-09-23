@@ -13,6 +13,5 @@ App.app_add_level(Level1)
 App.app_running()
 
 #TODO
-#Program enemy dying to bullets
 #Program end condition
 #Add collision and program rest of the level
