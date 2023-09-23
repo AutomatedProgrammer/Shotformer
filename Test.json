@@ -102,12 +102,30 @@
         },
 
         {
-            "object_name": "enemy",
+            "object_name": "enemy1",
             "object_width": 20,
             "object_height": 20,
             "object_x": 300,
             "object_y": 40,
             "image_path": "red_square.jpg"
+        },
+
+        {
+            "object_name": "enemy2",
+            "object_width": 20,
+            "object_height": 20,
+            "object_x": 100,
+            "object_y": 40,
+            "image_path": "block.png"
+        },
+
+        {
+            "object_name": "enemy3",
+            "object_width": 20,
+            "object_height": 20,
+            "object_x": 200,
+            "object_y": 40,
+            "image_path": "question_block.png"
         }
     ]
 

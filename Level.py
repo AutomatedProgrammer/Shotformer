@@ -11,6 +11,8 @@ class Level:
     
     def __init__(self):
         self.Objects = pygame.sprite.Group()
+        self.Enemies = pygame.sprite.Group()
+        self.Bullets = pygame.sprite.Group()
         #self.Player = Player
 
     def load_level(self, image_path):
@@ -22,9 +24,9 @@ class Level:
                 self.Objects.add(self.player_object)
                 #the commented out sections are for when the player class gets implemented. It's supposed to follow the same format as the object class since it inherits from it.
                 #pass
-            elif (temp_object.name == "enemy"):
+            elif ("enemy" in temp_object.name):
                 self.enemy_object = Enemy(object.get("object_name"),object.get("object_width"), object.get("object_height"), object.get("object_x"), object.get("object_y"), object.get("image_path"))
-                self.Objects.add(self.enemy_object)
+                self.Enemies.add(self.enemy_object)
             else:
                 self.Objects.add(temp_object)
        
@@ -33,6 +35,8 @@ class Level:
     
     def draw(self, screen):
         self.Objects.draw(screen)
+        self.Enemies.draw(screen)
+        self.Bullets.draw(screen)
         for object in self.Objects:
             if object.name != "player" and self.player_object.in_middle == True:
                 object.move_x(-scroll_speed)
@@ -42,9 +46,29 @@ class Level:
                     self.bullet_object.direction = "right"
                 elif self.player_object.direction == "left":
                     self.bullet_object.direction = "left"
-                self.add_obj(self.bullet_object)
+                self.Bullets.add(self.bullet_object)
                 self.player_object.gun_fired = False
-            if object.name == "bullet" and self.bullet_object.air_time == 50:
-                self.bullet_object.die()
+        
+        for enemy in self.Enemies:
+            if self.player_object.in_middle == True:
+                enemy.move_x(-scroll_speed)
+            if pygame.sprite.spritecollideany(enemy, self.Bullets):
+                enemy.die()
 
+        for bullet in self.Bullets:
+            if self.bullet_object.air_time == 50:
+                self.bullet_object.die()
+#            if object.name == "bullet" and pygame.sprite.collide_rect(self.bullet_object, self.enemy_object):
+#                self.bullet_object.die()
+#                self.enemy_object.shot = True
+#                print("COLLISION")
+#
+#            if object.name == "bullet" and self.bullet_object.air_time == 50:
+#                self.bullet_object.die()
+#
+#            if "enemy" in object.name and self.enemy_object.shot == True:
+#                self.enemy_object.die()
+#                self.enemy_object.shot = False
         self.Objects.update()
+        self.Enemies.update()
+        self.Bullets.update()

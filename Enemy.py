@@ -1,5 +1,6 @@
 import pygame
 from Object import Object
+from Bullet import Bullet
 
 class Enemy(Object):
 
@@ -27,6 +28,8 @@ class Enemy(Object):
             elif self.direction == "left":
                 self.direction = "right"
             self.timer = 0
+
+        
             
         #self.move_y(gravity)
         #self.rect.centery = self.y
