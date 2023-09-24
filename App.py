@@ -13,6 +13,7 @@ class App:
         self.screen = pygame.display.set_mode((screen_width, screen_height))
         self.clock = pygame.time.Clock()
         self.running = True
+        self.score = 0
         #debug sprite group to test objects
         #self.Objects = pygame.sprite.Group()
 
@@ -24,6 +25,9 @@ class App:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_s:
+                    print(self.score)
 
     #debug func to test objects
     #def app_add_obj(self, object):
@@ -39,6 +43,7 @@ class App:
         #self.Objects.update()
         for Level in self.Levels:
             Level.draw(self.screen)
+            self.score = Level.score
         #self.screen.blit(self.Player.image, self.Player.rect)
         #self.Player.update()
         pygame.display.flip()

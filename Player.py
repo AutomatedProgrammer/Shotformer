@@ -17,6 +17,15 @@ class Player(Object):
         self.gravity = 5
         self.jump_height = 12
         self.direction = "right"
+        self.collided = False
+        #self.player_top = self.rect.topleft + self.rect.topright
+        #self.player_bottom = self.rect.bottomleft + self.rect.bottomright
+        #self.player_left = self.rect.bottomleft + self.rect.topleft
+        #self.player_right = self.rect.bottomright + self.rect.topright
+        self.hitboxtop = pygame.Rect(x, y, width/1, height/2)
+        self.hitboxbottom = pygame.Rect(x, y, width/1, height/2)
+        self.hitboxleft = pygame.Rect(x, y, width/2, height)
+        self.hitboxright = pygame.Rect(x, y, width/2, height)
 
     def update(self):
         key = pygame.key.get_pressed()
@@ -92,5 +101,13 @@ class Player(Object):
 
         self.rect.centerx = self.x
         self.rect.centery = self.y
+        self.hitboxtop.centerx = self.x#-10
+        self.hitboxtop.centery = self.y-10
+        self.hitboxbottom.centerx = self.x#+10
+        self.hitboxbottom.centery = self.y+10
+        self.hitboxleft.centerx = self.x-10
+        self.hitboxleft.centery = self.y
+        self.hitboxright.centerx = self.x+10
+        self.hitboxright.centery = self.y
 
 # jumping can be added here, but for now, this will be for movements left and right.
