@@ -23,7 +23,7 @@ class Player(Object):
 
     def update(self):
         key = pygame.key.get_pressed()
-
+        #Gun has one round before reloading
         if key[pygame.K_SPACE] and self.gun_empty == False:
             print("BANG")
             self.gun_empty = True
@@ -33,6 +33,7 @@ class Player(Object):
             print("RELOAD")
             self.gun_empty = False
 
+        #This is for jumping diagonally right
         if key[pygame.K_UP] and key[pygame.K_RIGHT] and self.jumping == False:
             self.direction = "right"
             if self.air_time > 50:
@@ -45,7 +46,8 @@ class Player(Object):
 
             elif self.in_middle == False: 
                 self.move_x(self.PL_V)
-                
+        
+        #This is for jumping diagonally left
         elif key[pygame.K_UP] and key[pygame.K_LEFT] and self.jumping == False:
             self.direction = "left"
             if self.air_time > 50:
@@ -57,6 +59,7 @@ class Player(Object):
                 self.move_x(-self.PL_V)
                 self.in_middle = False
 
+        #This is just for jumping
         elif key[pygame.K_UP] and self.jumping == False:
             if self.air_time > 50:
                 self.jumping = True
@@ -64,6 +67,7 @@ class Player(Object):
             self.move_y(-self.jump_height)
             self.air_time += 1
 
+        #This is gravity
         if self.rect.centery < 340:
             self.move_y(self.gravity)
             self.rect.centery = self.y
