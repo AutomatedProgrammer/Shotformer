@@ -16,6 +16,7 @@ class Level:
         self.Player_Objects = pygame.sprite.Group()
         self.Background = pygame.sprite.Group()
         self.score = 0
+        self.finished = False
 
     def load_level(self, image_path):
         json_file = json.load(open('Test.json', 'r', encoding="utf-8"))
@@ -45,6 +46,9 @@ class Level:
         self.Player_Objects.draw(screen)
 
         for object in self.Objects:
+            if object.name == "flag" and pygame.sprite.spritecollideany(object, self.Player_Objects):
+                print("Level finished")
+                self.finished = True
             if self.player_object.in_middle == True:
                 object.move_x(-scroll_speed) 
             if pygame.Rect.colliderect(object.rect, self.player_object.hitboxtop):
@@ -67,6 +71,7 @@ class Level:
                     object.die()
                     self.bullet_object.hit_something = True
                     self.score += 1
+            
             
         
         for enemy in self.Enemies:

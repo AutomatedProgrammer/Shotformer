@@ -126,6 +126,15 @@
             "object_x": 200,
             "object_y": 40,
             "image_path": "question_block.png"
+        },
+
+        {
+            "object_name": "flag",
+            "object_width": 20,
+            "object_height": 350,
+            "object_x": 1000,
+            "object_y": 190,
+            "image_path": "question_block.png"
         }
     ]
 
