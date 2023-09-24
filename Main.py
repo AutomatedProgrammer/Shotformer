@@ -14,4 +14,3 @@ App.app_running()
 
 #TODO
 #Program end condition
-#Add collision and program rest of the level

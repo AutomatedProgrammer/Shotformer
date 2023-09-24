@@ -4,7 +4,7 @@
     "objects": [
         {
             "object_name": "background",
-            "object_width": 640,
+            "object_width": 2050,
             "object_height": 480,
             "object_x": 320,
             "object_y": 220,
@@ -85,7 +85,7 @@
 
         {
             "object_name": "ground",
-            "object_width": 1000,
+            "object_width": 2200,
             "object_height": 190,
             "object_x": 245,
             "object_y": 445,

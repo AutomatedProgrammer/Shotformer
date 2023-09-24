@@ -28,6 +28,8 @@ class App:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_s:
                     print(self.score)
+                if event.key == pygame.K_ESCAPE:
+                    self.running = False
 
     #debug func to test objects
     #def app_add_obj(self, object):
