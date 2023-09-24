@@ -46,6 +46,8 @@ class App:
         for Level in self.Levels:
             Level.draw(self.screen)
             self.score = Level.score
+            if Level.finished == True:
+                self.running = False
         #self.screen.blit(self.Player.image, self.Player.rect)
         #self.Player.update()
         pygame.display.flip()
@@ -56,4 +58,5 @@ class App:
             self.app_draw()
             self.clock.tick(60)
         else:
+            pygame.time.wait(1000)
             pygame.quit()
