@@ -15,6 +15,7 @@ class Level:
         self.Bullets = pygame.sprite.Group()
         self.Player_Objects = pygame.sprite.Group()
         self.Background = pygame.sprite.Group()
+        self.score = 0
 
     def load_level(self, image_path):
         json_file = json.load(open('Test.json', 'r', encoding="utf-8"))
@@ -55,6 +56,17 @@ class Level:
                 self.player_object.move_y(-self.player_object.gravity)
                 self.player_object.air_time = 0
                 self.player_object.jumping = False
+            if pygame.Rect.colliderect(object.rect, self.player_object.hitboxleft):
+                print("Left hit")
+                self.player_object.move_x(self.player_object.PL_V)
+            if pygame.Rect.colliderect(object.rect, self.player_object.hitboxright):
+                print("right hit")
+                self.player_object.move_x(-self.player_object.PL_V)
+            if "question_" in object.name:
+                if pygame.sprite.spritecollideany(object, self.Bullets):
+                    object.die()
+                    self.bullet_object.hit_something = True
+                    self.score += 1
             
         
         for enemy in self.Enemies:
@@ -62,6 +74,7 @@ class Level:
                 enemy.move_x(-scroll_speed)
             if pygame.sprite.spritecollideany(enemy, self.Bullets):
                 enemy.die()
+                self.score += 1
             
         for background_object in self.Background:
             if self.player_object.in_middle == True:
@@ -70,6 +83,9 @@ class Level:
         for bullet in self.Bullets:
             if self.bullet_object.air_time == 50:
                 self.bullet_object.die()
+            if self.bullet_object.hit_something == True:
+                self.bullet_object.die()
+                self.bullet_object.hit_something = False
 
         if self.player_object.gun_fired == True:
             self.bullet_object = Bullet("bullet", 20, 20, self.player_object.x, self.player_object.y, "red_square.jpg")

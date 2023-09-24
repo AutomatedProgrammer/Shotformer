@@ -21,7 +21,7 @@
         },
         
         {
-            "object_name": "object2",
+            "object_name": "question_object2",
             "object_width": 50,
             "object_height": 50,
             "object_x": 340,
@@ -30,7 +30,7 @@
         },
 
         {
-            "object_name": "object5",
+            "object_name": "question_object5",
             "object_width": 50,
             "object_height": 50,
             "object_x": 40,
@@ -39,7 +39,7 @@
         },
 
         {
-            "object_name": "object6",
+            "object_name": "question_object6",
             "object_width": 50,
             "object_height": 50,
             "object_x": 500,
@@ -48,7 +48,7 @@
         },
 
         {
-            "object_name": "object7",
+            "object_name": "question_object7",
             "object_width": 50,
             "object_height": 50,
             "object_x": 230,

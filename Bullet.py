@@ -8,6 +8,7 @@ class Bullet(Object):
         self.bullet_speed = 5
         self.air_time = 0
         self.direction = "right"
+        self.hit_something = False
         #Make max bullet time 50
 
     def update(self):
