@@ -29,10 +29,5 @@ class Enemy(Object):
                 self.direction = "right"
             self.timer = 0
 
-        
-            
-        #self.move_y(gravity)
-        #self.rect.centery = self.y
         self.rect.centerx = self.x
         self.rect.centery = self.y
-# There is probably a much better way of doing this

@@ -47,24 +47,21 @@ class Level:
 
         for object in self.Objects:
             if object.name == "flag" and pygame.sprite.spritecollideany(object, self.Player_Objects):
-                print("Level finished")
+                print("Level finished.")
+                print("You had " + str(self.score) + " points.")
                 self.finished = True
             if self.player_object.in_middle == True:
                 object.move_x(-scroll_speed) 
             if pygame.Rect.colliderect(object.rect, self.player_object.hitboxtop):
                 self.player_object.move_y(self.player_object.jump_height)
                 self.player_object.air_time = 50
-                print("Top hit")
             if pygame.Rect.colliderect(object.rect, self.player_object.hitboxbottom):
-                print("Bottom hit")
                 self.player_object.move_y(-self.player_object.gravity)
                 self.player_object.air_time = 0
                 self.player_object.jumping = False
             if pygame.Rect.colliderect(object.rect, self.player_object.hitboxleft):
-                print("Left hit")
                 self.player_object.move_x(self.player_object.PL_V)
             if pygame.Rect.colliderect(object.rect, self.player_object.hitboxright):
-                print("right hit")
                 self.player_object.move_x(-self.player_object.PL_V)
             if "question_" in object.name:
                 if pygame.sprite.spritecollideany(object, self.Bullets):
@@ -72,8 +69,6 @@ class Level:
                     self.bullet_object.hit_something = True
                     self.score += 1
             
-            
-        
         for enemy in self.Enemies:
             if self.player_object.in_middle == True:
                 enemy.move_x(-scroll_speed)
@@ -103,8 +98,10 @@ class Level:
 
         for player in self.Player_Objects:
             if pygame.sprite.spritecollideany(player, self.Enemies):
-                #player.die()
-                print("Player died.")
+                player.die()
+                print("You died.")
+                print("You had " + str(self.score) + " points.")
+                self.finished = True
             
         
             

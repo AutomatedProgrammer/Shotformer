@@ -9,7 +9,6 @@ class Bullet(Object):
         self.air_time = 0
         self.direction = "right"
         self.hit_something = False
-        #Make max bullet time 50
 
     def update(self):
         if self.direction == "right":

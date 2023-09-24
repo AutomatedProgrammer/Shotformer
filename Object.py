@@ -14,8 +14,7 @@ class Object(pygame.sprite.Sprite):
         self.rect.center = [self.x, self.y]
 
     def load_texture_from_sheet(self, sheet_path, sprite_x, sprite_y):
-        pass #More optimized texture loading function for loading from a spritesheet
-            #Will bother with optimizations once we actually get a game running
+        pass 
 
     def move_x(self, x_move):
         self.x += x_move
