@@ -1,5 +1,3 @@
-# Two objects: Enemy and Player
-# Connect keys for movement, inherited from Parent to Child class
 import pygame
 import random
 from Object import Object
@@ -13,15 +11,11 @@ class Player(Object):
         self.air_time = 0
         self.gun_fired = False
         self.gun_empty = False
-        self.PL_V = 3  # player velocity, had to include this here
+        self.PL_V = 3 
         self.gravity = 5
         self.jump_height = 12
         self.direction = "right"
         self.collided = False
-        #self.player_top = self.rect.topleft + self.rect.topright
-        #self.player_bottom = self.rect.bottomleft + self.rect.bottomright
-        #self.player_left = self.rect.bottomleft + self.rect.topleft
-        #self.player_right = self.rect.bottomright + self.rect.topright
         self.hitboxtop = pygame.Rect(x, y, width/1, height/2)
         self.hitboxbottom = pygame.Rect(x, y, width/1, height/2)
         self.hitboxleft = pygame.Rect(x, y, width/2, height)
@@ -29,7 +23,7 @@ class Player(Object):
 
     def update(self):
         key = pygame.key.get_pressed()
-
+        #Gun has one round before reloading
         if key[pygame.K_SPACE] and self.gun_empty == False:
             print("BANG")
             self.gun_empty = True
@@ -39,7 +33,7 @@ class Player(Object):
             print("RELOAD")
             self.gun_empty = False
 
-        #Jumping movement. I think to make it smoother we only set jumping to false after the key's been held down for a little bit.
+        #This is for jumping diagonally right
         if key[pygame.K_UP] and key[pygame.K_RIGHT] and self.jumping == False:
             self.direction = "right"
             if self.air_time > 50:
@@ -52,7 +46,8 @@ class Player(Object):
 
             elif self.in_middle == False: 
                 self.move_x(self.PL_V)
-                
+        
+        #This is for jumping diagonally left
         elif key[pygame.K_UP] and key[pygame.K_LEFT] and self.jumping == False:
             self.direction = "left"
             if self.air_time > 50:
@@ -64,7 +59,7 @@ class Player(Object):
                 self.move_x(-self.PL_V)
                 self.in_middle = False
 
-        #Jumping just up
+        #This is just for jumping
         elif key[pygame.K_UP] and self.jumping == False:
             if self.air_time > 50:
                 self.jumping = True
@@ -72,7 +67,7 @@ class Player(Object):
             self.move_y(-self.jump_height)
             self.air_time += 1
 
-        #Gravity
+        #This is gravity
         if self.rect.centery < 340:
             self.move_y(self.gravity)
             self.rect.centery = self.y
@@ -82,14 +77,11 @@ class Player(Object):
                 self.air_time = 0
                 self.rect.centery = 340
                 
-
-        #Regular movement
         if key[pygame.K_LEFT]:
             self.direction = "left"
             if self.rect.centerx > 0:
                 self.move_x(-self.PL_V)
                 self.in_middle = False
-            
             
         elif key[pygame.K_RIGHT]:
             self.direction = "right"
@@ -101,13 +93,11 @@ class Player(Object):
 
         self.rect.centerx = self.x
         self.rect.centery = self.y
-        self.hitboxtop.centerx = self.x#-10
+        self.hitboxtop.centerx = self.x
         self.hitboxtop.centery = self.y-10
-        self.hitboxbottom.centerx = self.x#+10
+        self.hitboxbottom.centerx = self.x
         self.hitboxbottom.centery = self.y+10
         self.hitboxleft.centerx = self.x-10
         self.hitboxleft.centery = self.y
         self.hitboxright.centerx = self.x+10
         self.hitboxright.centery = self.y
-
-# jumping can be added here, but for now, this will be for movements left and right.
