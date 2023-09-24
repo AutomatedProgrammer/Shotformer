@@ -14,31 +14,48 @@ class Level:
         self.Enemies = pygame.sprite.Group()
         self.Bullets = pygame.sprite.Group()
         self.Player_Objects = pygame.sprite.Group()
+        self.Background = pygame.sprite.Group()
 
     def load_level(self, image_path):
         json_file = json.load(open('Test.json', 'r', encoding="utf-8"))
         for object in json_file["objects"]:
-            temp_object = Object(object.get("object_name"),object.get("object_width"), object.get("object_height"), object.get("object_x"), object.get("object_y"), object.get("image_path"))
-            if (temp_object.name == "player"):
+            self.temp_object = Object(object.get("object_name"),object.get("object_width"), object.get("object_height"), object.get("object_x"), object.get("object_y"), object.get("image_path"))
+            if (self.temp_object.name == "player"):
                 self.player_object = Player(object.get("object_name"),object.get("object_width"), object.get("object_height"), object.get("object_x"), object.get("object_y"), object.get("image_path"))
                 self.Player_Objects.add(self.player_object)
-            elif ("enemy" in temp_object.name):
+            elif ("enemy" in self.temp_object.name):
                 self.enemy_object = Enemy(object.get("object_name"),object.get("object_width"), object.get("object_height"), object.get("object_x"), object.get("object_y"), object.get("image_path"))
                 self.Enemies.add(self.enemy_object)
+            elif (self.temp_object.name == "background"):
+                self.Background.add(self.temp_object)
+            elif (self.temp_object.name == "ground"):
+                self.Background.add(self.temp_object)
             else:
-                self.Objects.add(temp_object)
+                self.Objects.add(self.temp_object)
        
     def add_obj(self, object):
         self.Objects.add(object)
     
     def draw(self, screen):
+        self.Background.draw(screen)
         self.Objects.draw(screen)
         self.Enemies.draw(screen)
         self.Bullets.draw(screen)
         self.Player_Objects.draw(screen)
+
         for object in self.Objects:
             if self.player_object.in_middle == True:
-                object.move_x(-scroll_speed)
+                object.move_x(-scroll_speed) 
+            if pygame.Rect.colliderect(object.rect, self.player_object.hitboxtop):
+                self.player_object.move_y(self.player_object.jump_height)
+                self.player_object.air_time = 50
+                print("Top hit")
+            if pygame.Rect.colliderect(object.rect, self.player_object.hitboxbottom):
+                print("Bottom hit")
+                self.player_object.move_y(-self.player_object.gravity)
+                self.player_object.air_time = 0
+                self.player_object.jumping = False
+            
         
         for enemy in self.Enemies:
             if self.player_object.in_middle == True:
@@ -46,6 +63,9 @@ class Level:
             if pygame.sprite.spritecollideany(enemy, self.Bullets):
                 enemy.die()
             
+        for background_object in self.Background:
+            if self.player_object.in_middle == True:
+                background_object.move_x(-scroll_speed)            
 
         for bullet in self.Bullets:
             if self.bullet_object.air_time == 50:
@@ -60,6 +80,15 @@ class Level:
             self.Bullets.add(self.bullet_object)
             self.player_object.gun_fired = False
 
+        for player in self.Player_Objects:
+            if pygame.sprite.spritecollideany(player, self.Enemies):
+                #player.die()
+                print("Player died.")
+            
+        
+            
+            
+        self.Background.update()
         self.Objects.update()
         self.Enemies.update()
         self.Player_Objects.update()
