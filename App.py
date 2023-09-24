@@ -7,6 +7,8 @@ class App:
     def __init__(self, window_name, screen_width, screen_height):
         pygame.init()
         pygame.display.set_caption(window_name)
+        icon = pygame.image.load('question_block.png')
+        pygame.display.set_icon(icon)
         self.screen = pygame.display.set_mode((screen_width, screen_height))
         self.clock = pygame.time.Clock()
         self.running = True
