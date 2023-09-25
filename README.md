@@ -6,3 +6,7 @@ Game Mechanics: The-Frige and AsianPersuasion
 Level: TimeTraveller
 
 Sprites: Monatela
+
+Arrow keys to move. R to reload.
+
+Demo footage: https://youtu.be/VMPFDqzOuiU?feature=shared
